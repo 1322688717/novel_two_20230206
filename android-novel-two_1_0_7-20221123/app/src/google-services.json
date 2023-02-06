@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1061942773092",
+    "project_id": "xiaoshuo-9678d",
+    "storage_bucket": "xiaoshuo-9678d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1061942773092:android:36f2a50b3d73427c546671",
+        "android_client_info": {
+          "package_name": "cc.ixcc.noveltwo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1061942773092-8jvj6e8ef08i24jd6b3nbso9fthq112s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "cc.ixcc.noveltwo",
+            "certificate_hash": "75d9ca23da897adb2773bc9e2461c80b891defa8"
+          }
+        },
+        {
+          "client_id": "1061942773092-e1avfr5clm68vm1spdm66n8d4g92l6st.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDnKzZIErXE8YvWa7UjXrthjy-FuHLiuyQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1061942773092-e1avfr5clm68vm1spdm66n8d4g92l6st.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@drawable/read_setting_dialog_bg"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/ic_once_only"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/once"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/coins"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/ic_once_only"
+        app:layout_constraintEnd_toStartOf="@id/coins_tx"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="300" />
+
+    <TextView
+        android:id="@+id/coins_tx"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBaseline_toBaselineOf="@id/coins"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/coins"
+        android:text="Coins" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/once_bg"
+        android:padding="3dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/coins_tx"
+        app:layout_constraintStart_toStartOf="@+id/coins"
+        app:layout_constraintTop_toBottomOf="@+id/coins">
+
+        <ImageView
+            android:id="@+id/coins_ic"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="5dp"
+            android:src="@mipmap/coins"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/num_coins"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/num_coins"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="+150"
+            android:textColor="@color/text_color_theme"
+            app:layout_constraintBottom_toBottomOf="@id/coins_ic"
+            app:layout_constraintEnd_toStartOf="@id/extra_tx"
+            app:layout_constraintStart_toEndOf="@id/coins_ic"
+            app:layout_constraintTop_toTopOf="@id/coins_ic" />
+
+        <TextView
+            android:id="@+id/extra_tx"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:text="Extra"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="@id/num_coins"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/num_coins"
+            app:layout_constraintTop_toTopOf="@id/num_coins" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/buy"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/btn_with"
+        android:gravity="center"
+        android:text="$2.99"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+
+
+    <TextView
+        android:id="@+id/more"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="More Top-up amount options"
+        android:textColor="@color/text_color_theme"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buy" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
