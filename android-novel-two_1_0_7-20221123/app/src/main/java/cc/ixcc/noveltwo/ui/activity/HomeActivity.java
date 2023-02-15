@@ -264,9 +264,7 @@ public final class HomeActivity extends MyActivity
 
     public void getActiviyNotice() {
         if (!IsPostNotice) {
-            GetActiviyNoticeMsg(() -> {
-                ShowNotice();
-            });
+            GetActiviyNoticeMsg(this::ShowNotice);
         } else {
             ShowNotice();
         }

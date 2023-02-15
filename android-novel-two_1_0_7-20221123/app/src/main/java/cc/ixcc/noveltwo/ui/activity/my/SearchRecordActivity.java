@@ -50,6 +50,10 @@ import butterknife.BindView;
 
 import static cc.ixcc.noveltwo.Constants.PAGE_SIZE;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 /**
  * desc   : 阅读记录
  */
@@ -65,6 +69,7 @@ public final class SearchRecordActivity extends MyActivity implements TitleBarAc
 
     @Override
     protected int getLayoutId() {
+
         return R.layout.activity_search_record;
     }
 
@@ -373,5 +378,24 @@ public final class SearchRecordActivity extends MyActivity implements TitleBarAc
     @Override
     public void onSoftKeyboardClosed() {
 
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void event(MessageEvent messageEvent) {
+        // 处理数据
+    }
+
+    // 自定义一个事件数据类，主要用来传递数据。
+    public class MessageEvent {
+        private String message;
+        public MessageEvent(String message) {
+            this.message = message;
+        }
+        public String getMessage() {
+            return message;
+        }
+        public void setMessage(String message) {
+            this.message = message;
+        }
     }
 }

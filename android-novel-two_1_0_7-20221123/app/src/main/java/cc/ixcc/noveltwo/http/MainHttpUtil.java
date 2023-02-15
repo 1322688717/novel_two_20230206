@@ -1,5 +1,7 @@
 package cc.ixcc.noveltwo.http;
 
+import android.util.Log;
+
 /**
  * Created by cxf on 2018/9/17.
  */
@@ -19,6 +21,9 @@ public class MainHttpUtil {
     public static void readhistory(int page, int pagesize, HttpCallback callback) {
         HttpClient.getInstance().get(AllApi.readhistory, AllApi.readhistory).params("page", page).params("page_size", pagesize).execute(callback);
     }
+    // Log.e("TAG","code=="+code);
+    //                Log.e("TAG","msg=="+msg);
+    //                Log.e("TAG","info=="+info);
 
     public static void getMessage(String cattype, String type, int page, int pagesize, HttpCallback callback) {
         HttpClient.getInstance().post(AllApi.message, AllApi.message)

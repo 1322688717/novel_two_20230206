@@ -168,7 +168,7 @@ public class GenresFragment extends MyFragment<HomeActivity> implements GenresLe
     private void getInfo() {
         Log.e("ZCQ","copyright==="+AppContext.sInstance.getTenjinFlag());
         HttpClient.getInstance().get(AllApi.getbookmore, AllApi.getbookmore)
-                .params("channel_id", id)
+                .params("column_id", id)
                 .params("type",  Constants.more_xinshu)
                 .params("page", page)
                 .params("page_size", PAGE_SIZE)

@@ -30,6 +30,8 @@ import com.tenjin.android.TenjinSDK;
 //import com.jiusen.umeng.UmengClient;
 
 import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import butterknife.ButterKnife;
 import okhttp3.Call;
@@ -308,4 +310,6 @@ public abstract class MyActivity extends BaseActivity
         } else {
         }
     }
+
+
 }

@@ -118,7 +118,7 @@
         <TextView
             android:layout_width="350dp"
             android:layout_height="wrap_content"
-            android:text="Tips:If you can't unlock chapters normally,you may need 1442 coins to unlock 10 chapters at once."
+            android:text="Tips:If you can't unlock chapters normally,you may need 1500 coins to unlock 10 chapters at once."
             android:textColor="#303133"
             android:textSize="15sp"
             android:textStyle="bold"
