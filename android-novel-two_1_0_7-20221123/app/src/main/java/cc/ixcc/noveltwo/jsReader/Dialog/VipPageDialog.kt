@@ -1,32 +1,28 @@
 package cc.ixcc.noveltwo.jsReader.Dialog
 
 import android.app.Dialog
-import android.content.Context
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.fragment.app.FragmentActivity
-import com.bumptech.glide.Glide
 import cc.ixcc.noveltwo.R
 import cc.ixcc.noveltwo.jsReader.page.PageLoader
-import cc.ixcc.noveltwo.treader.AppContext
+import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.dialog_vip_bottom.*
 import kotlinx.android.synthetic.main.dialog_vip_bottom.view.*
-import rrxsxs.xsbookhaiwai.xsdtxs.ui.dialog.DiscountsDialog
 
 class VipPageDialog(
-        val activity: FragmentActivity,
-        var book: cc.ixcc.noveltwo.jsReader.model.bean.CollBookBean,
-        var current: Int
+    val activity: FragmentActivity,
+    var book: cc.ixcc.noveltwo.jsReader.model.bean.CollBookBean,
+    var current: Int,
 ) : Dialog(activity, R.style.PayDialogStyle) {
     private val STABLE_STATUS = View.SYSTEM_UI_FLAG_FULLSCREEN or
-            View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or
-            View.SYSTEM_UI_FLAG_LAYOUT_STABLE or
-            View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+        View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or
+        View.SYSTEM_UI_FLAG_LAYOUT_STABLE or
+        View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
 
     val ID = 101
     val buttonTexts = arrayListOf("Buttons", "Text", "Both")
@@ -35,12 +31,12 @@ class VipPageDialog(
     lateinit var payListener: PayDialogListener
     var payClickable = true
     var isAuto = false
-    var ownCoins = 0;
+    var ownCoins = 0
 
-    //购买章节数
+    // 购买章节数
     var chapter_number = 10
 
-    //总章节数
+    // 总章节数
     var chapter_left = 0
     var pageLoader: PageLoader? = null
         set(value) {
@@ -63,23 +59,21 @@ class VipPageDialog(
             pageLoader?.skipToPrePage()
             this.dismiss()
         }
-
     }
-
 
     override fun onStart() {
         super.onStart()
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
             val lp: WindowManager.LayoutParams? = window?.attributes
             lp?.layoutInDisplayCutoutMode =
-                    WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES
+                WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES
             window?.attributes = lp
             // 设置页面全屏显示
             // 设置页面全屏显示
             val decorView: View? = window?.decorView
             decorView?.let {
                 it.systemUiVisibility =
-                        it.systemUiVisibility or STABLE_STATUS or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                    it.systemUiVisibility or STABLE_STATUS or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
             }
         } else if (Build.VERSION.SDK_INT >= 19) {
             val decorView: View? = window?.decorView
@@ -104,8 +98,8 @@ class VipPageDialog(
 //        findViewById<ConstraintLayout>(R.id.content).setBackgroundDrawable(drawable1)
 //    }
 
-    var totalCost = 0;
-    var totalDeduce = 0;
+    var totalCost = 0
+    var totalDeduce = 0
 
     override fun show() {
         super.show()
@@ -121,14 +115,13 @@ class VipPageDialog(
         tvBookName.text = book.title
         tvBookCurrent.text = chapter.title
 
-        //刷新购买金币
-        onRefreshCost();
+        // 刷新购买金币
+        onRefreshCost()
 
         tv1.text = "Including the free and purchased chapters"
 
-        //个人金币
-        balance_box.balance_own_line.balance_own.text = ownCoins.toString() + "${config.coin_name}";
-
+        // 个人金币
+        balance_box.balance_own_line.balance_own.text = ownCoins.toString() + "${config.coin_name}"
 
         tvGoOpen.setOnClickListener {
             if (this::payListener.isInitialized) {
@@ -143,59 +136,59 @@ class VipPageDialog(
         }
         cbAuto.isChecked = isAuto
 
-        //4个按钮
+        // 4个按钮
         div2.radioGroup1.radio1.setOnClickListener {
             if (chapter_number != 1) {
-                div2.radioGroup1.radio1.isChecked = true;
-                div2.radioGroup1.radio2.isChecked = false;
-                div2.radioGroup1.radio3.isChecked = false;
-                div2.radioGroup1.radio4.isChecked = false;
+                div2.radioGroup1.radio1.isChecked = true
+                div2.radioGroup1.radio2.isChecked = false
+                div2.radioGroup1.radio3.isChecked = false
+                div2.radioGroup1.radio4.isChecked = false
 
-                chapter_number = 1;
-                onRefreshCost();
+                chapter_number = 1
+                onRefreshCost()
             }
         }
         div2.radioGroup1.radio2.setOnClickListener {
             if (chapter_number != 10) {
-                div2.radioGroup1.radio1.isChecked = false;
-                div2.radioGroup1.radio2.isChecked = true;
-                div2.radioGroup1.radio3.isChecked = false;
-                div2.radioGroup1.radio4.isChecked = false;
+                div2.radioGroup1.radio1.isChecked = false
+                div2.radioGroup1.radio2.isChecked = true
+                div2.radioGroup1.radio3.isChecked = false
+                div2.radioGroup1.radio4.isChecked = false
 
-                chapter_number = 10;
-                onRefreshCost();
+                chapter_number = 10
+                onRefreshCost()
             }
         }
         div2.radioGroup1.radio3.setOnClickListener {
             if (chapter_number != 50) {
-                div2.radioGroup1.radio1.isChecked = false;
-                div2.radioGroup1.radio2.isChecked = false;
-                div2.radioGroup1.radio3.isChecked = true;
-                div2.radioGroup1.radio4.isChecked = false;
+                div2.radioGroup1.radio1.isChecked = false
+                div2.radioGroup1.radio2.isChecked = false
+                div2.radioGroup1.radio3.isChecked = true
+                div2.radioGroup1.radio4.isChecked = false
 
-                chapter_number = 50;
-                onRefreshCost();
+                chapter_number = 50
+                onRefreshCost()
             }
         }
         div2.radioGroup1.radio4.setOnClickListener {
             if (chapter_number != chapter_left) {
-                div2.radioGroup1.radio1.isChecked = false;
-                div2.radioGroup1.radio2.isChecked = false;
-                div2.radioGroup1.radio3.isChecked = false;
-                div2.radioGroup1.radio4.isChecked = true;
+                div2.radioGroup1.radio1.isChecked = false
+                div2.radioGroup1.radio2.isChecked = false
+                div2.radioGroup1.radio3.isChecked = false
+                div2.radioGroup1.radio4.isChecked = true
 
-                chapter_number = chapter_left;
-                onRefreshCost();
+                chapter_number = chapter_left
+                onRefreshCost()
             }
         }
 
         if (chapter_left < 10) {
-            div2.radioGroup1.radio2.visibility = View.GONE;
-            div2.radioGroup1.radio3.visibility = View.GONE;
-            onRefreshCost();
+            div2.radioGroup1.radio2.visibility = View.GONE
+            div2.radioGroup1.radio3.visibility = View.GONE
+            onRefreshCost()
         } else if (chapter_left < 50) {
-            div2.radioGroup1.radio3.visibility = View.GONE;
-            onRefreshCost();
+            div2.radioGroup1.radio3.visibility = View.GONE
+            onRefreshCost()
         }
 
         tvByCurrent.setOnClickListener {
@@ -213,31 +206,31 @@ class VipPageDialog(
     }
 
     fun onRefreshCost() {
-        //计算购买所需金币
+        // 计算购买所需金币
 
         if (chapter_number >= 50) {
-            totalCost = (chapter_number * chapter.coin * 0.75).toInt();
-            totalDeduce = (chapter_number * chapter.coin * 0.25).toInt();
+            totalCost = (chapter_number * chapter.coin * 0.75).toInt()
+            totalDeduce = (chapter_number * chapter.coin * 0.25).toInt()
         } else if (chapter_number >= 10) {
-            totalCost = (chapter_number * chapter.coin * 0.9).toInt();
-            totalDeduce = (chapter_number * chapter.coin * 0.1).toInt();
+            totalCost = (chapter_number * chapter.coin * 0.9).toInt()
+            totalDeduce = (chapter_number * chapter.coin * 0.1).toInt()
         } else {
-            totalCost = chapter_number * chapter.coin;
+            totalCost = chapter_number * chapter.coin
         }
 
         if (totalCost <= ownCoins) {
-            tvByCurrent.text = "${totalCost} Coins to Read this Chapter"
+            tvByCurrent.text = "$totalCost Coins to Read this Chapter"
         } else {
             tvByCurrent.text = "Purchase Coins to Read"
         }
 
         tvCoin.text = "Actually paid:"
         if (totalDeduce != 0) {
-            tvCoin2.text = "" + totalCost.toString() + "${config.coin_name}";
-            tvCoin3.text = " Saved(" + totalDeduce.toString() + ")${config.coin_name}";
+            tvCoin2.text = "" + totalCost.toString() + "${config.coin_name}"
+            tvCoin3.text = " Saved(" + totalDeduce.toString() + ")${config.coin_name}"
         } else {
-            tvCoin2.text = " " + totalCost.toString() + "${config.coin_name}";
-            tvCoin3.text = "";
+            tvCoin2.text = " " + totalCost.toString() + "${config.coin_name}"
+            tvCoin3.text = ""
         }
     }
 
