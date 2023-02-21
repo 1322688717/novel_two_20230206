@@ -366,7 +366,7 @@ public final class TopUpActivity extends MyActivity implements KeyboardWatcher.S
         }
 
         coin.setText(bean.getCoin() + "");
-        adapter.setData(bean.getCoin_list().subList(0,bean.getCoin_list().size() - 2));
+        adapter.setData(bean.getCoin_list().subList(0,bean.getCoin_list().size()));
 
         if (!checkVip()) {
             //添加 视频广告按钮
